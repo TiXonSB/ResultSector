@@ -129,41 +129,6 @@ void output (vector<Sector> sectors){
     }
 }
 
-/*vector<Sector> outputSectors (std::string file, vector<Sector> sectors){
-    // Вывод секторов в консоль
-
-    Sector sector;
-    vector<Sector> empty;
-    empty.push_back({0, 0});
-
-    std::ifstream infile(file);
-
-    if (!infile.is_open()) {
-        std::cerr << "Error opening file" << endl;
-        return empty;
-    }
-    std::string line;
-
-    while (std::getline(infile, line)){
-        std::stringstream ss(line);
-        double start, end;
-        ss >> start >> end;
-
-        cout << "[" << start << "] [" << end << "]" << endl;
-
-        sector.start = conversionToRadians(start);
-        sector.end = conversionToRadians(end);
-
-        sectors.push_back(sector);
-    };
-
-    infile.close();
-
-
-
-
-}*/
-
 vector<Sector> calculat (vector<Sector> sectors){
     // Вычисление секторов
 
