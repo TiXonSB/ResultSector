@@ -1,7 +1,7 @@
 #include "mathSectors.h"
 
 double conversionToRadians (double degrees){
-    // ������� � �������
+    // Перевод из градусов в радианы
 
     double radians;
     radians = (degrees * M_PI) / 180;
@@ -10,7 +10,7 @@ double conversionToRadians (double degrees){
 }
 
 double conversionToDegrees (double radians){
-    // ������� � �������
+    // Перевод из радиан в градусы
 
     double degress;
     degress = (radians * 180) / M_PI;
@@ -19,7 +19,7 @@ double conversionToDegrees (double radians){
 }
 
 bool isOverlapping(Sector s1, Sector s2) {
-    // �������� �� ����������� ���� ��������
+    // Проверка пересечения секторов
 
     if ((s1.end >= s2.start and s2.end >= s1.start))
       return 1;
@@ -28,7 +28,7 @@ bool isOverlapping(Sector s1, Sector s2) {
 }
 
 Sector mergeSectors(Sector s1, Sector s2) {
-    // ����������� ���� ������������� ��������
+    // Слияние секторов
     Sector mergedSector;
 
     mergedSector.start = min(s1.start, s2.start);
@@ -52,13 +52,13 @@ vector<Sector> connectionPieces(vector<Sector> sectors){
 }
 
 bool isFullCircle(Sector sector) {
-    // �������� �� ������ ������
+    // Проверка полного сектора
 
     return (sector.end - sector.start >= 2 * M_PI);
 }
 
 vector<Sector> normalizeRadians(vector<Sector> sectors){
-    // �������� ������ � �������� 0 � 2 ��
+    // Приведение секторов к радианам
 
     double temporaryRadiana;
 
@@ -90,7 +90,7 @@ vector<Sector> normalizeRadians(vector<Sector> sectors){
 }
 
 vector<Sector> combining (vector<Sector> sectors){
-    // �������������� �������������� ��������
+    // Слияние секторов
 
     vector<Sector> mergedSectors;
 
@@ -122,15 +122,15 @@ vector<Sector> combining (vector<Sector> sectors){
 }
 
 void output (vector<Sector> sectors){
-    // ����� �� ������� ��������� ��������
+    // Вывод секторов
 
     for (int i = 0; i < sectors.size(); i++){
         std::cout << i + 1 << ". Final sector: [" << conversionToDegrees(sectors[i].start) << "] [" << conversionToDegrees(sectors[i].end) << "]" << endl;
-          }
+    }
 }
 
-vector<Sector> outputSectors (std::string file, vector<Sector> sectors){
-    // ��������� �������� �� �����
+/*vector<Sector> outputSectors (std::string file, vector<Sector> sectors){
+    // Вывод секторов в консоль
 
     Sector sector;
     vector<Sector> empty;
@@ -162,17 +162,16 @@ vector<Sector> outputSectors (std::string file, vector<Sector> sectors){
 
 
 
-}
+}*/
 
 vector<Sector> calculat (vector<Sector> sectors){
-    // ����������� ����� (input + ����������)
+    // Вычисление секторов
 
     sectors = normalizeRadians(sectors);
 
     sectors = combining(sectors);
 
     sectors = connectionPieces(sectors);
-
 
     return sectors;
 
